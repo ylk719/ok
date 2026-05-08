@@ -2,62 +2,85 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#000000">
-    <title>iPhone 页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好好柯的桌面</title>
+    <!-- 引入外部样式表 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="phone-container">
-        <div class="phone-screen">
-            <div class="screen-content">
-                <div class="pages-wrapper" id="pagesWrapper">
-                    <!-- 第一页 -->
-                    <div class="page page-1">
-                        <div class="page-icon">🚀</div>
-                        <h1>欢迎来到</h1>
-                        <p>iPhone 风格页面</p>
-                        <div class="page-description">
-                            向左滑动查看更多内容<br>
-                            支持触摸和鼠标滑动
-                        </div>
-                    </div>
+    <div class="phone-screen">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <span>NuxOS</span>
+            <span>16:01</span>
+            <span>📶 🔋</span>
+        </div>
 
-                    <!-- 第二页 -->
-                    <div class="page page-2">
-                        <div class="page-icon">✨</div>
-                        <h1>第二页</h1>
-                        <p>流畅的滑动体验</p>
-                        <div class="page-description">
-                            这是一个响应式设计<br>
-                            在任何设备上都能完美显示
-                        </div>
-                    </div>
+        <!-- 个人信息卡片 -->
+        <div class="profile-card">
+            <div class="avatar">
+                <img src="https://picsum.photos/id/40/100/100" alt="头像">
+            </div>
+            <div class="nickname">好好柯</div>
+            <div class="id">HHK_id</div>
+            <div class="bio">淡淡的就会顺顺的</div>
+            <div class="location">📍 台北, 台灣</div>
+        </div>
 
-                    <!-- 第三页 -->
-                    <div class="page page-3">
-                        <div class="page-icon">🎉</div>
-                        <h1>第三页</h1>
-                        <p>继续探索</p>
-                        <div class="page-description">
-                            点击下方指示点快速跳转<br>
-                            或继续滑动回到第一页
-                        </div>
-                    </div>
+        <!-- 中间组件区 -->
+        <div class="widget-area">
+            <div class="love-widget">
+                <div class="days">7<span>天</span></div>
+                <div class="couple-avatars">
+                    <img src="https://picsum.photos/id/64/60/60" alt="女生头像">
+                    <img src="https://picsum.photos/id/91/60/60" alt="男生头像">
                 </div>
+                <div class="love-text">🐰 恋爱纪念 🐻</div>
+                <div class="date">2026.05.02</div>
             </div>
 
-            <!-- 页面指示点 -->
-            <div class="dots-indicator">
-                <div class="dot active" data-page="0"></div>
-                <div class="dot" data-page="1"></div>
-                <div class="dot" data-page="2"></div>
+            <div class="app-grid">
+                <div class="app-icon">
+                    <div class="icon">💬</div>
+                    <span>消息</span>
+                </div>
+                <div class="app-icon">
+                    <div class="icon">👤</div>
+                    <span>名册</span>
+                </div>
+                <div class="app-icon">
+                    <div class="icon">🌍</div>
+                    <span>此时此刻</span>
+                </div>
+                <div class="app-icon">
+                    <div class="icon">🐰</div>
+                    <span>世界书</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部Dock栏 -->
+        <div class="dock-bar">
+            <div class="dock-icon">
+                <div class="icon">🐱</div>
+                <span>外观</span>
+            </div>
+            <div class="dock-icon">
+                <div class="icon">💕</div>
+                <span>情侣空间</span>
+            </div>
+            <div class="dock-icon">
+                <div class="icon">P❤P</div>
+                <span>论坛</span>
+            </div>
+            <div class="dock-icon">
+                <div class="icon">⚙️</div>
+                <span>设置</span>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- 引入交互脚本 -->
+    <script src="desktop-interactive.js"></script>
 </body>
 </html>
