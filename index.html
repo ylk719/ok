@@ -1,86 +1,148 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>好好柯的桌面</title>
-    <!-- 引入外部样式表 -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>�úÿµ�����</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="desktop-bg">
+  <div class="iphone-frame">
+    <div class="dynamic-island"></div>
     <div class="phone-screen">
-        <!-- 状态栏 -->
-        <div class="status-bar">
-            <span>NuxOS</span>
-            <span>16:01</span>
-            <span>📶 🔋</span>
+      <!-- ״̬�� -->
+      <div class="status-bar">
+        <div class="status-left">Nup326</div>
+        <div class="status-center" id="clock">18:27</div>
+        <div class="status-right">
+          <div class="signal-bars"><div class="signal-bar"></div><div class="signal-bar"></div><div class="signal-bar"></div><div class="signal-bar"></div></div>
+          <div class="wifi-icon"></div>
+          <div class="battery"><div class="battery-body"><div class="battery-level"></div></div><div class="battery-cap"></div></div>
         </div>
+      </div>
 
-        <!-- 个人信息卡片 -->
-        <div class="profile-card">
-            <div class="avatar">
-                <img src="https://picsum.photos/id/40/100/100" alt="头像">
+      <!-- ����������CSS Scroll Snap -->
+      <div class="scroll-box" id="scrollBox">
+
+        <!-- ��1ҳ -->
+        <div class="scroll-page" id="page0">
+          <div class="dot-bg"></div>
+          <div class="p1-wrap">
+            <div class="profile-card">
+              <div class="avatar">< img src="https://picsum.photos/id/40/100/100" alt="ͷ��"></div>
+              <div class="nickname">�úÿ�</div>
+              <div class="id">HHK_id</div>
+              <div class="bio">�����ľͻ�˳˳��</div>
+              <div class="location">?? ̨��, ̨��</div>
             </div>
-            <div class="nickname">好好柯</div>
-            <div class="id">HHK_id</div>
-            <div class="bio">淡淡的就会顺顺的</div>
-            <div class="location">📍 台北, 台灣</div>
-        </div>
-
-        <!-- 中间组件区 -->
-        <div class="widget-area">
-            <div class="love-widget">
-                <div class="days">7<span>天</span></div>
+            <div class="widget-area">
+              <div class="love-widget">
+                <div class="days">7<span>��</span></div>
                 <div class="couple-avatars">
-                    <img src="https://picsum.photos/id/64/60/60" alt="女生头像">
-                    <img src="https://picsum.photos/id/91/60/60" alt="男生头像">
+                  < img src="https://picsum.photos/id/64/60/60" alt="Ů��ͷ��">
+                  < img src="https://picsum.photos/id/91/60/60" alt="����ͷ��">
                 </div>
-                <div class="love-text">🐰 恋爱纪念 🐻</div>
+                <div class="love-text">?? �������� ??</div>
                 <div class="date">2026.05.02</div>
+              </div>
+              <div class="app-grid">
+                <div class="app-icon"><div class="icon">??</div><span>��Ϣ</span></div>
+                <div class="app-icon"><div class="icon">??</div><span>����</span></div>
+                <div class="app-icon"><div class="icon">??</div><span>��ʱ�˿�</span></div>
+                <div class="app-icon"><div class="icon">??</div><span>������</span></div>
+              </div>
             </div>
-
-            <div class="app-grid">
-                <div class="app-icon">
-                    <div class="icon">💬</div>
-                    <span>消息</span>
-                </div>
-                <div class="app-icon">
-                    <div class="icon">👤</div>
-                    <span>名册</span>
-                </div>
-                <div class="app-icon">
-                    <div class="icon">🌍</div>
-                    <span>此时此刻</span>
-                </div>
-                <div class="app-icon">
-                    <div class="icon">🐰</div>
-                    <span>世界书</span>
-                </div>
+            <div class="dock-bar">
+              <div class="dock-icon"><div class="icon">??</div><span>���</span></div>
+              <div class="dock-icon"><div class="icon">??</div><span>���¿ռ�</span></div>
+              <div class="dock-icon"><div class="icon">P?P</div><span>��̳</span></div>
+              <div class="dock-icon"><div class="icon">??</div><span>����</span></div>
             </div>
+          </div>
         </div>
 
-        <!-- 底部Dock栏 -->
-        <div class="dock-bar">
-            <div class="dock-icon">
-                <div class="icon">🐱</div>
-                <span>外观</span>
+        <!-- ��2ҳ -->
+        <div class="scroll-page" id="page1">
+          <div class="dot-bg"></div>
+          <div class="p2-wrap">
+            <div class="status-card">
+              <div class="status-header">
+                <span class="back-btn">?</span>
+                <span class="title">�ҵĄӑB</span>
+                <div class="icons"><span>??</span><span>?</span></div>
+              </div>
+              <div class="status-top">
+                <div class="mood"><span>?</span><span>���鲻�e 100%</span></div>
+              </div>
+              <div class="status-images">
+                < img src="https://picsum.photos/id/1001/120/120" alt="">
+                <div class="center-text">�Ҹ��м���Ѱ</div>
+                < img src="https://picsum.photos/id/1002/120/120" alt="">
+              </div>
+              <div class="status-user">
+                <div class="avatar">??<div class="camera-badge">??</div></div>
+                <div class="info">
+                  <div class="name-row"><span class="time-badge">5:20</span><span class="name">������</span></div>
+                  <div class="user-id">ymy_0023</div>
+                </div>
+                <div class="right"><div class="gallery-icon">??</div><div class="date">01/01/2026</div></div>
+              </div>
+              <div class="status-content">�װ��ģ���ܱ��ۣ�ͨ���Ҹ�</div>
+              <div class="status-actions"><span>??</span><span>??</span><span>?</span></div>
             </div>
-            <div class="dock-icon">
-                <div class="icon">💕</div>
-                <span>情侣空间</span>
+            <div class="icon-grid-4x2">
+              <div class="app-item"><div class="item-icon" style="background:linear-gradient(135deg,#FFD1DC,#FFB6C1);">??</div><span>��̳</span></div>
+              <div class="app-item"><div class="item-icon" style="background:linear-gradient(135deg,#ffeef8,#ffd6e7);">??</div><span>���¿ռ�</span></div>
+              <div class="app-item"><div class="item-icon" style="background:#f0f0f0;">??</div><span>������</span></div>
+              <div class="app-item"><div class="item-icon" style="background:#fff5f5;">??</div><span>�պ�ģ����</span></div>
+              <div class="app-item"><div class="item-icon" style="background:#f5f5f5;">??</div><span>һ������̨</span></div>
+              <div class="app-item"><div class="item-icon" style="background:linear-gradient(135deg,#fff0f5,#ffe4e1);">??</div><span>����</span></div>
+              <div class="app-item"><div class="item-icon" style="background:linear-gradient(135deg,#ffe4e1,#ffd1dc);">?</div><span>������</span></div>
+              <div class="app-item"><div class="item-icon" style="background:linear-gradient(135deg,#e0f0ff,#ffe4e1);">??</div><span>������</span></div>
             </div>
-            <div class="dock-icon">
-                <div class="icon">P❤P</div>
-                <span>论坛</span>
-            </div>
-            <div class="dock-icon">
-                <div class="icon">⚙️</div>
-                <span>设置</span>
-            </div>
+          </div>
         </div>
+
+        <!-- ��3ҳ -->
+        <div class="scroll-page" id="page2">
+          <div class="dot-bg"></div>
+          <div class="p3-wrap">
+            <div class="calendar-card">
+              <div class="calendar-header"><div class="month">5��</div><div class="year">2026��</div></div>
+              <div class="calendar-days-header"><div>��</div><div>һ</div><div>��</div><div>��</div><div>��</div><div>��</div><div>��</div></div>
+              <div class="calendar-days">
+                <div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day empty"></div>
+                <div class="calendar-day">1</div><div class="calendar-day">2</div>
+                <div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day today">7</div><div class="calendar-day">8</div><div class="calendar-day">9</div>
+                <div class="calendar-day">10</div><div class="calendar-day">11</div><div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div><div class="calendar-day">15</div><div class="calendar-day">16</div>
+                <div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div><div class="calendar-day">22</div><div class="calendar-day">23</div>
+                <div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day">30</div>
+                <div class="calendar-day">31</div>
+              </div>
+            </div>
+            <div class="icon-grid-4x2" style="grid-template-columns:repeat(4,1fr);">
+              <div class="app-item"><div class="item-icon" style="background:#fff;">??</div><span>��Ϸ����</span></div>
+              <div class="app-item"><div class="item-icon" style="background:#ff4444;color:#fff;">??</div><span>���</span></div>
+              <div class="app-item"><div class="item-icon" style="background:#ffcce0;">??</div><span>�׹�����</span></div>
+              <div class="app-item"><div class="item-icon" style="background:#fff;">??</div><span>������</span></div>
+              <div class="app-item"><div class="item-icon" style="background:#fff;">??</div><span>MCP ����</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-dots" id="dots">
+        <div class="dot active" data-page="0"></div>
+        <div class="dot" data-page="1"></div>
+        <div class="dot" data-page="2"></div>
+      </div>
+
+      <div class="home-indicator"></div>
     </div>
+  </div>
+</div>
 
-    <!-- 引入交互脚本 -->
-    <script src="desktop-interactive.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
