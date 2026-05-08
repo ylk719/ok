@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>iPhone 页面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone-screen">
+            <div class="screen-content">
+                <div class="pages-wrapper" id="pagesWrapper">
+                    <!-- 第一页 -->
+                    <div class="page page-1">
+                        <div class="page-icon">🚀</div>
+                        <h1>欢迎来到</h1>
+                        <p>iPhone 风格页面</p>
+                        <div class="page-description">
+                            向左滑动查看更多内容<br>
+                            支持触摸和鼠标滑动
+                        </div>
+                    </div>
+
+                    <!-- 第二页 -->
+                    <div class="page page-2">
+                        <div class="page-icon">✨</div>
+                        <h1>第二页</h1>
+                        <p>流畅的滑动体验</p>
+                        <div class="page-description">
+                            这是一个响应式设计<br>
+                            在任何设备上都能完美显示
+                        </div>
+                    </div>
+
+                    <!-- 第三页 -->
+                    <div class="page page-3">
+                        <div class="page-icon">🎉</div>
+                        <h1>第三页</h1>
+                        <p>继续探索</p>
+                        <div class="page-description">
+                            点击下方指示点快速跳转<br>
+                            或继续滑动回到第一页
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 页面指示点 -->
+            <div class="dots-indicator">
+                <div class="dot active" data-page="0"></div>
+                <div class="dot" data-page="1"></div>
+                <div class="dot" data-page="2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
