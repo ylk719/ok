@@ -2,8 +2,57 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Censy 仿苹果手机主页</title>
+<script>
+// 更新版本，每次改内容只改这里 v2→v3→v4
+const nowVer = "v2";
+const localVer = localStorage.getItem("webAppVer");
+if(localVer !== nowVer){
+    localStorage.setItem("webAppVer",nowVer);
+    location.reload(true);
+}
+</script>
+<!-- 1. 终极视口配置（全屏铺满+禁止缩放+适配刘海） -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- 2. 苹果IOS 专属全屏配置（Safari生效） -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- 状态栏透明沉浸（覆盖页面顶部） -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- 手机桌面显示APP名称 -->
+<meta name="apple-mobile-web-app-title" content="桌面主页">
+
+<!-- 3. 安卓浏览器基础全屏 -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- 浏览器顶部主题配色（和页面统一） -->
+<meta name="theme-color" content="#f9e8f2">
+
+<!-- 4. 最强通用PWA清单 安卓必全屏（关键！） -->
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi5Lqs5paw54K556e7Iiwic2hvcnRfbmFtZSI6IuWKoOiwg+WcsCIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5IjoiZnVsbHNjcmVlbiIsIm9yaWVudGF0aW9uIjoicG9ydHJhaXQiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2ZmZmZmZiIsInRoZW1lX2NvbG9yIjoiI2Y5ZThmMiJ9">
+
+<!-- 5. 屏蔽移动端长按弹窗、选中文字 -->
+<meta name="format-detection" content="telephone=no">
+<title>桌面主页</title>
+<style>
+/* 全局锁定全屏高度，防止溢出、滚动跑偏 */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* 禁止页面拖动回弹 */
+* {
+  -webkit-overflow-scrolling: none;
+  touch-action: none;
+}
+</style>
 <style>
 /* design by censy */
 .censy-phone-wrapper {
