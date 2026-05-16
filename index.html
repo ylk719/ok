@@ -1,63 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<script>
-// 更新版本，每次改内容只改这里 v2→v3→v4
-const nowVer = "v2";
-const localVer = localStorage.getItem("webAppVer");
-if(localVer !== nowVer){
-    localStorage.setItem("webAppVer",nowVer);
-    location.reload(true);
-}
-</script>
-<!-- 1. 终极视口配置（全屏铺满+禁止缩放+适配刘海） -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
-<!-- 2. 苹果IOS 专属全屏配置（Safari生效） -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<!-- 状态栏透明沉浸（覆盖页面顶部） -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- 手机桌面显示APP名称 -->
-<meta name="apple-mobile-web-app-title" content="桌面主页">
-
-<!-- 3. 安卓浏览器基础全屏 -->
-<meta name="mobile-web-app-capable" content="yes">
-<!-- 浏览器顶部主题配色（和页面统一） -->
-<meta name="theme-color" content="#f9e8f2">
-
-<!-- 4. 最强通用PWA清单 安卓必全屏（关键！） -->
-<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi5Lqs5paw54K556e7Iiwic2hvcnRfbmFtZSI6IuWKoOiwg+WcsCIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5IjoiZnVsbHNjcmVlbiIsIm9yaWVudGF0aW9uIjoicG9ydHJhaXQiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2ZmZmZmZiIsInRoZW1lX2NvbG9yIjoiI2Y5ZThmMiJ9">
-
-<!-- 5. 屏蔽移动端长按弹窗、选中文字 -->
-<meta name="format-detection" content="telephone=no">
-<title>桌面主页</title>
-<style>
-/* 全局锁定全屏高度，防止溢出、滚动跑偏 */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-/* 禁止页面拖动回弹 */
-* {
-  -webkit-overflow-scrolling: none;
-  touch-action: none;
-}
-</style>
+```html
 <style>
 /* design by censy */
 .censy-phone-wrapper {
     width: 100%;
-    height: 812px;
+    /* 使用dvh动态视口高度，并保留最低高度兜底，确保全屏铺满 */
+    height: 100dvh;
+    min-height: 812px;
     margin: 0 auto;
     background: #ffffff; 
     background-size: cover;
@@ -78,7 +26,9 @@ html, body {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 140px; 
+    /* 适配全屏后的底部安全区和顶部安全区(防刘海遮挡) */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: calc(140px + env(safe-area-inset-bottom)); 
     box-sizing: border-box;
 }
 .censy-pages-container::-webkit-scrollbar {
@@ -101,7 +51,7 @@ html, body {
 }
 
 .censy-top-section, .censy-psp-wrapper, .censy-p3-top-wrapper {
-    padding-top: 40px; 
+    padding-top: 15px; 
     display: flex;
     justify-content: center;
     flex-shrink: 0;
@@ -262,11 +212,14 @@ html, body {
 .censy-p3-card3 .censy-p3-photo { height: 230px; }
 
 .censy-p3-bottom-apps {
-    position: absolute; top: 364px; left: 24px; display: flex; justify-content: flex-start; gap: 24px; z-index: 25;
+    position: absolute; top: 339px; left: 24px; display: flex; justify-content: flex-start; gap: 24px; z-index: 25;
 }
 
+/* 适配全屏后的底部横条区域 */
 .censy-fixed-bottom {
-    position: absolute; bottom: 2px; left: 0; width: 100%;
+    position: absolute; 
+    bottom: calc(2px + env(safe-area-inset-bottom)); 
+    left: 0; width: 100%;
     display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 100; pointer-events: none;
 }
 .censy-page-indicators { display: flex; gap: 8px; pointer-events: auto; }
@@ -286,7 +239,6 @@ html, body {
 .censy-dock-icon svg { width: 24px; height: 24px; stroke: #555; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .censy-dock-name { font-size: 10px; color: #666; white-space: nowrap; font-weight: 500; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
 
-/* 设置交互面板样式 */
 .censy-settings-panel {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(246,246,248,0.95); backdrop-filter: blur(20px);
@@ -295,7 +247,7 @@ html, body {
 }
 .censy-settings-panel.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
 .censy-settings-header {
-    padding: 50px 24px 20px; display: flex; justify-content: space-between; align-items: center;
+    padding: calc(50px + env(safe-area-inset-top)) 24px 20px; display: flex; justify-content: space-between; align-items: center;
     background: rgba(255,255,255,0.8); font-size: 20px; font-weight: 600; color: #333;
     box-shadow: 0 2px 15px rgba(0,0,0,0.03); backdrop-filter: blur(10px);
 }
@@ -314,7 +266,6 @@ html, body {
 }
 .censy-bg-upload-btn:active { background: #e2dde9; }
 
-/* 折叠面板样式 */
 .censy-settings-details { margin: 0; }
 .censy-settings-summary {
     display: flex; justify-content: space-between; align-items: center;
@@ -335,30 +286,21 @@ html, body {
     color: #6a5a8a; font-size: 13px; font-weight: 500; cursor: pointer; outline: none; transition: background 0.2s;
 }
 .censy-settings-app-item button:active { background: #e2dde9; }
-
-/* 正确隐藏上传按钮：移出屏幕，而不是 display:none */
-input[type="file"] {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-}
 </style>
-</head>
-<body style="margin:0; background:#eee;">
 
 <div class="censy-phone-wrapper" id="censyPhoneMain">
-    <input type="file" id="censyFileCover" accept="image/*">
-    <input type="file" id="censyFileAvatar" accept="image/*">
-    <input type="file" id="censyPhotoFile" accept="image/*">
-    <input type="file" id="censyPspUpload" accept="image/*">
-    <input type="file" id="censyIscreenUpload" accept="image/*">
-    <input type="file" id="censyIscreenUpload2" accept="image/*">
-    <input type="file" id="censyP3Up1" accept="image/*">
-    <input type="file" id="censyP3Up2" accept="image/*">
-    <input type="file" id="censyP3Up3" accept="image/*">
+    <input type="file" id="censyFileCover" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyFileAvatar" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyPhotoFile" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyPspUpload" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyIscreenUpload" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyIscreenUpload2" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyP3Up1" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyP3Up2" class="censy-hidden-file" accept="image/*" style="display:none;">
+    <input type="file" id="censyP3Up3" class="censy-hidden-file" accept="image/*" style="display:none;">
     
-    <input type="file" id="censyGlobalBgUpload" accept="image/*">
-    <input type="file" id="censyGlobalIconUpload" accept="image/*">
+    <input type="file" id="censyGlobalBgUpload" accept="image/*" style="display:none;">
+    <input type="file" id="censyGlobalIconUpload" accept="image/*" style="display:none;">
 
     <div class="censy-pages-container" id="censyPagesContainer">
         <!-- 第1页 -->
@@ -611,6 +553,29 @@ input[type="file"] {
 
 <script>
 (function(){
+    // 强制注入全屏沉浸式WebApp的Meta标签协议 (越狱穿透注入父级头部)
+    const setupFullscreenWebAppData = () => {
+        const targetHead = window.parent ? window.parent.document.head : document.head;
+        const metas = [
+          { name: "apple-mobile-web-app-capable", content: "yes" }, // iOS全屏支持
+          { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" }, // 沉浸式透明状态栏
+          { name: "mobile-web-app-capable", content: "yes" }, // Android全屏支持
+          // 配置动态视口控制规则，防止双击放大并让出安全区域
+          { name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" } 
+        ];
+
+        metas.forEach(m => {
+          let existingTag = targetHead.querySelector(`meta[name="${m.name}"]`);
+          if (!existingTag) {
+          existingTag = document.createElement('meta');
+          existingTag.name = m.name;
+          targetHead.appendChild(existingTag);
+          }
+          existingTag.content = m.content;
+        });
+    };
+    setupFullscreenWebAppData();
+
     function bindUpload(boxId, fileId, isBg, callback) {
         const box = document.getElementById(boxId);
         const file = document.getElementById(fileId);
@@ -762,6 +727,4 @@ input[type="file"] {
     }
 })();
 </script>
-
-</body>
-</html>
+```
